@@ -167,6 +167,7 @@ const Main = () => {
       if (id == data[i].name && pw == data[i].phone && data[i].pass == 1) {
         console.log(id, pw, i);
         navigate("/pass", { state: data[i].name });
+        break;
       } else if (
         id == data[i].name &&
         pw == data[i].phone &&
@@ -174,10 +175,13 @@ const Main = () => {
       ) {
         console.log(id, pw, i);
         navigate("/fail");
-      }
-      if (id != data[i].name || pw != data[i].phone) {
-        alert("error!");
-        window.location.replace("/");
+        break;
+      } else if (i == 45) {
+        console.log(id, pw, i);
+        alert(
+          "등록되지 않은 성함/번호입니다. \n성함과 번호를 다시 한 번 확인해주세요!"
+        );
+        break;
       }
     }
   };
