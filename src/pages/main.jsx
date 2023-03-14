@@ -163,23 +163,23 @@ const Main = () => {
   }
 
   const discriminate = () => {
-    for (let i = 0; i < 45; i++) {
-      if (id == data.name[i] && pw == data.phone[i] && data[i].pass == 1) {
-        console.log(id, pw);
-        navigate("/pass");
+    for (let i = 0; i < 46; i++) {
+      if (id == data[i].name && pw == data[i].phone && data[i].pass == 1) {
+        console.log(id, pw, i);
+        navigate("/pass", { state: data[i].name });
       } else if (
-        id == data.name[i] &&
+        id == data[i].name &&
         pw == data[i].phone &&
         data[i].pass == 0
       ) {
-        console.log(id, pw);
+        console.log(id, pw, i);
         navigate("/fail");
       }
+      if (id != data[i].name || pw != data[i].phone) {
+        alert("error!");
+        window.location.replace("/");
+      }
     }
-    console.log(id, pw);
-    alert(
-      "등록되지 않은 번호/이름입니다.\n번호와 이름을 다시한번 확인해주세요!"
-    );
   };
 
   return (
