@@ -17,10 +17,9 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<Main />}>
-            <Route path="/fail" element={<Fail />} />
-            <Route path="/pass" element={<Pass />} />
-          </Route>
+          <Route path="/" element={<Main />} />
+          <Route path="/fail" element={<Fail />} />
+          <Route path="/pass" element={<Pass />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -14,7 +14,7 @@ const WhiteBox = styled.div`
   position: relative;
   width: 80%;
   height: 560px;
-  top: 149px;
+  top: 30px;
   background: #ffffff;
   box-shadow: 0px 0px 4px 2px rgba(100, 100, 100, 0.25);
   border-radius: 5px;
@@ -79,6 +79,10 @@ const PhoneBox = styled.input`
   border-radius: 50px;
   border: 0;
   outline: none;
+
+  ::placeholder {
+    color: white;
+  }
 `;
 
 const Button = styled.div`
