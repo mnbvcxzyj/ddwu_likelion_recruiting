@@ -32,7 +32,7 @@ const LogoImg = styled.img`
 const PassText = styled.p`
   padding-top: 110px;
   font-family: "Pretendard";
-  font-weight: 800;
+  font-weight: 900;
   font-size: 36px;
   line-height: 42px;
   text-align: center;
@@ -55,7 +55,7 @@ const PassNameDiv = styled.div`
 
 const PassName = styled.div`
   font-style: normal;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 24px;
   line-height: 29px;
   color: #0075ff;
@@ -102,14 +102,14 @@ const Pass = () => {
         "#c4b5fd",
         "#f9bec7",
       ],
-      confettiRadius: 4,
-      confettiNumber: 400,
+      confettiRadius: 3,
+      confettiNumber: 275,
     });
   };
 
   confetti();
-  var timer = setInterval(confetti, 3000);
-  setTimeout(stopConfetti, 9000);
+  var timer = setInterval(confetti, 5000);
+  setTimeout(stopConfetti, 15000);
 
   function stopConfetti() {
     clearInterval(timer);

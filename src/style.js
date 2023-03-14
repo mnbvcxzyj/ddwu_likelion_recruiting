@@ -9,7 +9,7 @@ ${reset}
 }
 
     body {
-        font-family: "Pretendard"
+        font-family: "Pretendard" !important
     }
     
     a{
