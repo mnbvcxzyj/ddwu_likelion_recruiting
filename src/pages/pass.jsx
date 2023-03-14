@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div`
   background: #fae4ea;
@@ -83,7 +84,11 @@ const LetterImg = styled.img`
   margin-left: -30px;
 `;
 
-const pass = () => {
+const Pass = () => {
+  const location = useLocation();
+  const name = location.state;
+  console.log(name);
+
   return (
     <Container>
       <WhiteDiv>
@@ -94,7 +99,7 @@ const pass = () => {
           축하합니다!
         </PassText>
         <PassNameDiv>
-          <PassName>어쩌고</PassName>
+          <PassName>{name}</PassName>
           <PassNameSub>님</PassNameSub>은
         </PassNameDiv>
         <TextDiv>
@@ -119,4 +124,4 @@ const pass = () => {
   );
 };
 
-export default pass;
+export default Pass;
