@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import JSConfetti from "js-confetti";
 
 const Container = styled.div`
   background: #fae4ea;
@@ -88,6 +89,31 @@ const Pass = () => {
   const location = useLocation();
   const name = location.state;
   console.log(name);
+
+  const jsConfetti = new JSConfetti();
+
+  const confetti = () => {
+    jsConfetti.addConfetti({
+      confettiColors: [
+        "#ff0a54",
+        "#fde047",
+        "#a3e635",
+        "#38bdf8",
+        "#c4b5fd",
+        "#f9bec7",
+      ],
+      confettiRadius: 4,
+      confettiNumber: 400,
+    });
+  };
+
+  confetti();
+  var timer = setInterval(confetti, 3000);
+  setTimeout(stopConfetti, 9000);
+
+  function stopConfetti() {
+    clearInterval(timer);
+  }
 
   return (
     <Container>
