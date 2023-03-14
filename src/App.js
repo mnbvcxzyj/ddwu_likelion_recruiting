@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalStyle } from "./style";
-import Main from './pages/main';
-import Fail from './pages/fail';
-import Pass from './pages/pass';
+import Main from "./pages/main";
+import Fail from "./pages/fail";
+import Pass from "./pages/pass";
 
 function App() {
   return (
