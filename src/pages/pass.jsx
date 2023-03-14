@@ -92,7 +92,7 @@ const Pass = () => {
 
   const jsConfetti = new JSConfetti();
 
-  const handleClick = () => {
+  const confetti = () => {
     jsConfetti.addConfetti({
       confettiColors: [
         "#ff0a54",
@@ -107,7 +107,13 @@ const Pass = () => {
     });
   };
 
-  setInterval(handleClick, 2000);
+  confetti();
+  var timer = setInterval(confetti, 3000);
+  setTimeout(stopConfetti, 9000);
+
+  function stopConfetti() {
+    clearInterval(timer);
+  }
 
   return (
     <Container>
