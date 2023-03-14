@@ -35,7 +35,7 @@ const Title = styled.div`
   margin: auto;
   font-family: "Pretendard";
   font-style: normal;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 20px;
   line-height: 24px;
   text-align: center;
