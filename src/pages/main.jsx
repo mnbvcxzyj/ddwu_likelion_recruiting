@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import data from "./data.json";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import "./main.css";
 
 const Background = styled.div`
   position: relative;
@@ -59,6 +58,7 @@ const NameBox = styled.input`
   background: #cd99a6;
   border-radius: 50px;
   border: 0;
+  padding-left: 10px;
   outline: none;
 `;
 
@@ -78,10 +78,12 @@ const PhoneBox = styled.input`
   background: #cd99a6;
   border-radius: 50px;
   border: 0;
+  padding-left: 10px;
   outline: none;
 
   ::placeholder {
     color: white;
+    text-align: center;
   }
 `;
 
@@ -183,7 +185,7 @@ const Main = () => {
       } else if (i == 45) {
         console.log(id, pw, i);
         alert(
-          "등록되지 않은 성함/번호입니다. \n성함과 번호를 다시 한 번 확인해주세요!"
+          "등록되지 않은 성함과 번호입니다. \n성함과 번호를 다시 한 번 확인해주세요!"
         );
         break;
       }
