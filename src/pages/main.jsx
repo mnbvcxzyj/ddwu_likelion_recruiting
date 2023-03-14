@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import data from "./data.json";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import "./main.css";
 
 const Background = styled.div`
   position: relative;
-  height: 1000px;
+  height: 844px;
   background: #902443;
 `;
 
 const WhiteBox = styled.div`
   position: relative;
-  width: 269px;
-  height: 500px;
+  width: 80%;
+  height: 560px;
   top: 149px;
   background: #ffffff;
   box-shadow: 0px 0px 4px 2px rgba(100, 100, 100, 0.25);
@@ -19,20 +22,17 @@ const WhiteBox = styled.div`
 `;
 
 const Logo = styled.div`
-  position: absolute;
+  position: relative;
   width: 81px;
-  left: 94px;
   height: 81px;
   margin: auto;
   top: 43px;
 `;
 
 const Title = styled.div`
-  position: absolute;
-  width: 251px;
+  position: relative;
   height: 48px;
-  top: 134px;
-  left: 9px;
+  top: 53px;
   margin: auto;
   font-family: "Pretendard";
   font-style: normal;
@@ -44,19 +44,18 @@ const Title = styled.div`
 `;
 
 const Name = styled.div`
-  position: absolute;
+  position: relative;
   width: 36px;
-  left: 50px;
   height: 26px;
-  top: 218px;
+  top: 109px;
+  left: 10px;
 `;
 
 const NameBox = styled.input`
-  position: absolute;
+  position: relative;
   width: 210px;
   height: 35px;
-  top: 241px;
-  left: 32px;
+  top: 117px;
   background: #cd99a6;
   border-radius: 50px;
   border: 0;
@@ -64,19 +63,18 @@ const NameBox = styled.input`
 `;
 
 const Phone = styled.div`
-  position: absolute;
+  position: relative;
   width: 74px;
-  left: 50px;
   height: 26px;
-  top: 294px;
+  top: 155px;
+  left: 8px;
 `;
 
 const PhoneBox = styled.input`
-  position: absolute;
+  position: relative;
   width: 210px;
   height: 35px;
-  top: 320px;
-  left: 32px;
+  top: 161px;
   background: #cd99a6;
   border-radius: 50px;
   border: 0;
@@ -84,20 +82,20 @@ const PhoneBox = styled.input`
 `;
 
 const Button = styled.div`
-  position: absolute;
+  position: relative;
   width: 93px;
   height: 36px;
-  top: 389px;
-  left: 90px;
+  top: 195px;
   background: #902443;
   border-radius: 10px;
+  cursor: pointer;
+  margin: auto;
 `;
 
 const BtnLetter = styled.div`
-  position: absolute;
+  position: relative;
   height: 26px;
   top: 5px;
-  left: 26px;
   font-family: "SUIT";
   font-style: normal;
   font-weight: 700;
@@ -105,13 +103,13 @@ const BtnLetter = styled.div`
   line-height: 25px;
   text-align: center;
   color: #ffffff;
+  cursor: pointer;
 `;
 
 const Footer = styled.div`
   position: relative;
-  width: 248px;
   height: 29px;
-  top: 530px;
+  top: 280px;
   margin: auto;
   font-family: "Pretendard";
   font-style: normal;
@@ -123,24 +121,67 @@ const Footer = styled.div`
 `;
 
 const Rec = styled.div`
-  position: absolute;
+  position: relative;
   width: 10px;
-  top: 222px;
-  left: 32px;
+  top: 121px;
   border: 3.5px solid #dc7190;
   transform: rotate(90deg);
 `;
 
 const Rec2 = styled.div`
-  position: absolute;
+  position: relative;
   width: 10px;
-  top: 298.5px;
-  left: 32px;
+  top: 167px;
   border: 3.5px solid #dc7190;
   transform: rotate(90deg);
 `;
 
-const main = () => {
+const Div = styled.div`
+  text-align: center;
+  margin: auto;
+`;
+
+const Container = styled.div`
+  width: 210px;
+  margin: auto;
+`;
+
+const Main = () => {
+  const navigate = useNavigate();
+
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+
+  function handleInput(event) {
+    setId(event.target.value);
+    //console.log("id", id);
+  }
+
+  function handlePwInput(event) {
+    setPw(event.target.value);
+    //console.log("pw", pw);
+  }
+
+  const discriminate = () => {
+    for (let i = 0; i < 46; i++) {
+      if (id == data[i].name && pw == data[i].phone && data[i].pass == 1) {
+        console.log(id, pw, i);
+        navigate("/pass", { state: data[i].name });
+      } else if (
+        id == data[i].name &&
+        pw == data[i].phone &&
+        data[i].pass == 0
+      ) {
+        console.log(id, pw, i);
+        navigate("/fail");
+      }
+      if (id != data[i].name || pw != data[i].phone) {
+        alert("error!");
+        window.location.replace("/");
+      }
+    }
+  };
+
   return (
     <Background>
       <WhiteBox>
@@ -154,19 +195,27 @@ const main = () => {
           동덕여자대학교 멋쟁이사자처럼
           <br /> 11기 아기사자 합격자 발표
         </Title>
-        <Rec />
-        <Name>성함</Name>
-        <NameBox></NameBox>
-        <Rec2 />
-        <Phone>전화번호</Phone>
-        <PhoneBox placeholder="010-xxxx-xxxx"></PhoneBox>
-        <Button>
-          <BtnLetter>입력</BtnLetter>
-        </Button>
+        <Div>
+          <Container>
+            <Rec />
+            <Name>성함</Name>
+            <NameBox className="nameBox" onChange={handleInput}></NameBox>
+            <Rec2 />
+            <Phone>전화번호</Phone>
+            <PhoneBox
+              placeholder="010-xxxx-xxxx"
+              className="phoneBox"
+              onChange={handlePwInput}
+            ></PhoneBox>
+          </Container>
+          <Button onClick={discriminate}>
+            <BtnLetter>입력</BtnLetter>
+          </Button>
+        </Div>
         <Footer>DONGDUK X LIKELION</Footer>
       </WhiteBox>
     </Background>
   );
 };
 
-export default main;
+export default Main;
