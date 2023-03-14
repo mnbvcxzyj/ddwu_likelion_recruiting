@@ -11,7 +11,7 @@ const WhiteBox = styled.div`
   position: relative;
   width: 80%;
   height: 571px;
-  top: 10%;
+  top: 50px;
   margin: auto;
   background: #ffffff;
   box-shadow: 0px 0px 4px 2px rgba(100, 100, 100, 0.25);
@@ -33,7 +33,7 @@ const Logo = styled.div`
 
 const TextBox = styled.div`
   position: relative;
-  padding-top: 5%;
+  padding-top: 22px;
   margin-left: auto;
   margin-right: auto;
 
@@ -44,7 +44,7 @@ const TextBox = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 21px;
   color: #000000;
 `;
 
